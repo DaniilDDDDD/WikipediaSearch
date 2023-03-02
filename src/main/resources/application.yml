@@ -12,3 +12,4 @@ spring:
       auto-index-creation: true
       authentication-database: wiki
 
+initialDataPath: "src/main/resources/data.json"

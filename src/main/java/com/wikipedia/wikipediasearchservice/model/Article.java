@@ -21,16 +21,12 @@ import java.util.List;
 @Document("article")
 public class Article {
 
-
     @Id
     private String id;
 
     @DocumentReference
     private List<Category> categories;
 
-    @Indexed(unique = true)
-    @NotNull
-    @NotBlank
     private String title;
 
     private String wiki;
@@ -41,8 +37,6 @@ public class Article {
 
     private List<String> auxiliaryText;
 
-    @NotNull
-    @NotBlank
     private String language;
 
 }

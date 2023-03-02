@@ -27,7 +27,7 @@ public class Category {
     @NotNull
     private String name;
 
-    @DocumentReference
-    private List<Article> users;
+    @DocumentReference(lazy = true)
+    private List<Article> articles;
 
 }

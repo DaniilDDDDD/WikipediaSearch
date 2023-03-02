@@ -9,8 +9,8 @@ import java.util.Set;
 public class ArticleUpdate {
 
     private String title;
-    private List<String> auxiliaryText;
+    private List<String> auxiliary_text;
     private String wiki;
-    private Set<String> categories;
+    private Set<String> category;
 
 }
