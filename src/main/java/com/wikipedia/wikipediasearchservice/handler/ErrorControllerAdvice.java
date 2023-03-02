@@ -31,15 +31,15 @@ public class ErrorControllerAdvice {
     // INTERNAL_SERVER_ERROR handlers
 
 
-//    @ExceptionHandler(Exception.class)
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    @ResponseBody
-//    public NoFieldException onException(
-//            Exception e
-//    ) {
-//        return new NoFieldException(
-//                e.getMessage()
-//        );
-//    }
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    public NoFieldException onException(
+            Exception e
+    ) {
+        return new NoFieldException(
+                e.getMessage()
+        );
+    }
 
 }
