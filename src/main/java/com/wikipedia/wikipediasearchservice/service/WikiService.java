@@ -60,21 +60,16 @@ public class WikiService {
         if (articleData.isEmpty())
             throw new EntityNotFoundException("No article with provided id not found!");
 
-
         Article article = articleData.get();
-
-//        System.out.println(article);
 
         List<Category> updatedCategories = article.getCategories()
                 .stream()
-//                .peek(System.out::println)
                 .peek(category -> category.getArticles().remove(article))
                 .collect(Collectors.toCollection(LinkedList::new));
+        categoryRepository.saveAll(updatedCategories);
 
-        List<Category> categories = categoryRepository.findAllByNameIn(articleUpdate.getCategory());
-//        System.out.println(categories);
-        categories = categories.stream().peek(category -> category.getArticles().add(article)).toList();
-        updatedCategories.addAll(categories);
+        List<Category> categories = categoryRepository
+                .getOrCreateCategory(articleUpdate.getCategory());
 
         article.setTitle(articleUpdate.getTitle());
         article.setAuxiliaryText(articleUpdate.getAuxiliary_text());
@@ -82,8 +77,19 @@ public class WikiService {
         article.setWiki(articleUpdate.getWiki());
         article.setTimestamp(new Date());
 
-        categoryRepository.saveAll(updatedCategories);
-        return articleRepository.save(article);
+        Article articleWIthId = articleRepository.save(article);
+        categories = categories.stream()
+                .peek(category -> {
+                    List<Article> articles = category.getArticles();
+                    if (articles != null)
+                        articles.add(articleWIthId);
+                    else
+                        category.setArticles(List.of(articleWIthId));
+                })
+                .toList();
+        categoryRepository.saveAll(categories);
+
+        return article;
 
     }
 
