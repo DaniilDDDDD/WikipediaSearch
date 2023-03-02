@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: wiki
+      username: wiki
+      password: qwerty1234
+      auto-index-creation: true
+      authentication-database: wiki
