@@ -68,8 +68,11 @@ public class WikiController {
 
 
     @GetMapping("/refresh")
-    public ResponseEntity<String> refresh() {
-        wikiService.refresh(false);
+    public ResponseEntity<String> refresh(
+            @RequestParam(value = "link", required = false)
+            String dataLink
+    ) throws IOException {
+        wikiService.refresh(dataLink);
         return ResponseEntity.ok("Database refreshed with new data!");
     }
 

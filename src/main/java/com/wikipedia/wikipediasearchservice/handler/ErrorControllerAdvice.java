@@ -16,30 +16,30 @@ public class ErrorControllerAdvice {
     // BAD_REQUEST handlers
 
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public NoFieldException onEntityNotFoundException(
-            Exception e
-    ) {
-        return new NoFieldException(
-                e.getMessage()
-        );
-    }
-
-
-    // INTERNAL_SERVER_ERROR handlers
-
-
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ResponseBody
-    public NoFieldException onException(
-            Exception e
-    ) {
-        return new NoFieldException(
-                e.getMessage()
-        );
-    }
+//    @ExceptionHandler(EntityNotFoundException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ResponseBody
+//    public NoFieldException onEntityNotFoundException(
+//            Exception e
+//    ) {
+//        return new NoFieldException(
+//                e.getMessage()
+//        );
+//    }
+//
+//
+//    // INTERNAL_SERVER_ERROR handlers
+//
+//
+//    @ExceptionHandler(Exception.class)
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    @ResponseBody
+//    public NoFieldException onException(
+//            Exception e
+//    ) {
+//        return new NoFieldException(
+//                e.getMessage()
+//        );
+//    }
 
 }

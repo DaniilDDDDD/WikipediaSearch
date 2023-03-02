@@ -11,3 +11,4 @@ spring:
       password: qwerty1234
       auto-index-creation: true
       authentication-database: wiki
+
